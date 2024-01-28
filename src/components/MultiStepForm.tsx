@@ -16,8 +16,8 @@ const schemas = [
     aadharId: z.coerce.number().min(5),
     occupation: z.enum(["salaried", "student", "businessman"]),
     bank: z.enum(["X Bank", "Y Bank", "Z Bank"]),
-    bankAccount: z.coerce.number(),
-    confirmBankAccount: z.coerce.number(),
+    bankAccount: z.coerce.number().min(5),
+    confirmBankAccount: z.coerce.number().min(5),
     salary: z.coerce.number().optional(),
     gstNo: z.coerce.number().optional(),
   })

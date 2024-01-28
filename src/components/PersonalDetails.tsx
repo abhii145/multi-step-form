@@ -16,43 +16,43 @@ const PersonalDetails: React.FC = () => {
           className="block text-gray-700 text-sm font-bold mb-2"
           htmlFor="name"
         >
-          Name:
+          Name <span className="text-red-400">*</span>
         </label>
         <input
           {...register("name")}
           className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
         {errors.name && (
-          <span className="text-red-500">{errors.name.message}</span>
+          <span className="text-red-500">Please Enter Your Name</span>
         )}
       </div>
 
       <div className="mb-4">
-        <label className="block mb-2">Email</label>
+        <label className="block mb-2">Email <span className="text-red-500">*</span></label>
         <input
           {...register("email")}
           type="email"
           className="w-full p-2 border border-gray-300 rounded"
         />
         {errors.email && (
-          <span className="text-red-500">{errors.email.message}</span>
+          <span className="text-red-500">Please enter a valid email address</span>
         )}
       </div>
 
       <div className="mb-4">
-        <label className="block mb-2">Aadhar ID</label>
+        <label className="block mb-2">Aadhar ID <span className="text-red-500">*</span></label>
         <input
           {...register("aadharId")}
           className="w-full p-2 border border-gray-300 rounded"
         />
         {errors.aadharId && (
-          <span className="text-red-500">{errors.aadharId.message}</span>
+          <span className="text-red-500">Please Enter 5 Digit Aadhar ID</span>
         )}
       </div>
 
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2">
-          Occupation:
+          Occupation <span className="text-red-400">*</span>
         </label>
         <label className="inline-flex items-center mr-4">
           <input
@@ -81,13 +81,16 @@ const PersonalDetails: React.FC = () => {
           />
           <span className="ml-2 text-gray-700">Businessman</span>
         </label>
+        <div>
         {errors.occupation && (
-          <span className="text-red-500">{errors.occupation.message}</span>
+          <span className="text-red-500">Please Select Your Occupation</span>
         )}
+        </div>
+       
       </div>
 
       <div className="mb-4">
-        <label className="block mb-2">Bank</label>
+        <label className="block mb-2">Bank <span className="text-red-400">*</span></label>
         <select
           {...register("bank")}
           className="w-full p-2 border border-gray-300 rounded"
@@ -97,23 +100,23 @@ const PersonalDetails: React.FC = () => {
           <option value="Z Bank">Z Bank</option>
         </select>
         {errors.bank && (
-          <span className="text-red-500">{errors.bank.message}</span>
+          <span className="text-red-500">Please Choose Your Bank</span>
         )}
       </div>
 
       <div className="mb-4">
-        <label className="block mb-2">Bank Account No</label>
+        <label className="block mb-2">Bank Account No <span className="text-red-400">*</span></label>
         <input
           {...register("bankAccount")}
           type="text"
           className="w-full p-2 border border-gray-300 rounded"
         />
         {errors.bankAccount && (
-          <span className="text-red-500">{errors.bankAccount.message}</span>
+          <span className="text-red-500">Please Enter Your Bank Ac No</span>
         )}
       </div>
       <div className="mb-4">
-        <label className="block mb-2">Confirm Bank Account No</label>
+        <label className="block mb-2">Confirm Bank Account No <span className="text-red-400">*</span></label>
         <input
           {...register("confirmBankAccount")}
           type="password"
@@ -121,7 +124,7 @@ const PersonalDetails: React.FC = () => {
         />
         {errors.confirmBankAccount && (
           <span className="text-red-500">
-            {errors.confirmBankAccount.message}
+           Bank account does not match
           </span>
         )}
       </div>
@@ -136,12 +139,12 @@ const PersonalDetails: React.FC = () => {
           </label>
           <input
             {...register("salary", {
-              required: "Salary is required for salaried employees",
+              required: true,
             })}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
           {errors.salary && (
-            <span className="text-red-500">{errors.salary.message}</span>
+            <span className="text-red-500">Please Enter Your Salary</span>
           )}
         </div>
       )}
@@ -159,7 +162,7 @@ const PersonalDetails: React.FC = () => {
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
           {errors.gstNo && (
-            <span className="text-red-500">{errors.gstNo.message}</span>
+            <span className="text-red-500">Please Enter Your GST NO</span>
           )}
         </div>
       )}
