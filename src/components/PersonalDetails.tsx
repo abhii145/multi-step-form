@@ -1,36 +1,16 @@
-import { useForm, SubmitHandler } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { personalDetailsSchema } from "./Schema";
-
-type FormValues = z.infer<typeof personalDetailsSchema>;
+import { useFormContext } from "react-hook-form";
 
 const PersonalDetails: React.FC = () => {
   const {
     register,
-    handleSubmit,
     watch,
-    formState: { errors, isSubmitting },
-  } = useForm<FormValues>({
-    resolver: zodResolver(personalDetailsSchema),
-  });
-
-  const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 100));
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    formState: { errors },
+  } = useFormContext();
 
   const occupation = watch("occupation");
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="max-w-md mx-auto mt-8 p-4 bg-gray-100 rounded-lg"
-    >
+    <div className="max-w-md mx-auto mt-8 p-4 bg-gray-100 rounded-lg">
       <div className="mb-4">
         <label
           className="block text-gray-700 text-sm font-bold mb-2"
@@ -183,14 +163,7 @@ const PersonalDetails: React.FC = () => {
           )}
         </div>
       )}
-      <button
-        type="submit"
-        className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-        disabled={isSubmitting}
-      >
-        {isSubmitting ? "....lOADING" : "Submit"}
-      </button>
-    </form>
+    </div>
   );
 };
 

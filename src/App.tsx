@@ -1,21 +1,11 @@
+import MultiStepForm from "./components/MultiStepForm";
 
-import Address from "./components/Address";
-import FinalStep from "./components/FinalStep";
-
-import PersonalDetails from "./components/PersonalDetails";
-import Stepper from "./components/Stepper";
-
-function App() {
+const App = () => {
   return (
-    <>
-    <Stepper/>
-  <PersonalDetails/>
-<Address/>
-<FinalStep/>
-
-    </>
-   
+    <div>
+      <MultiStepForm />
+    </div>
   );
-}
+};
 
 export default App;

@@ -41,18 +41,13 @@ export const personalDetailsSchema = z
     }
   );
 
-
-
-  export const addressSchema = z.object({
-    address: z.string().min(5).max(100),
-    city: z.string().min(2).max(50),
-    state: z.string().min(2).max(50),
-    country: z.string().min(2).max(50),
-    zipCode: z.string().regex(/^\d{6}$/),
-  });
-  
-  export type AddressFormValues = z.infer<typeof addressSchema>;
-  
+export const addressSchema = z.object({
+  address: z.string().min(5).max(100),
+  city: z.string().min(2).max(50),
+  state: z.string().min(2).max(50),
+  country: z.string().min(2).max(50),
+  zipCode: z.string().regex(/^\d{6}$/),
+});
 
 export const FinalStepSchema = z.object({
   isChecked: z.boolean(),
