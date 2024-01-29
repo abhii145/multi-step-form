@@ -1,6 +1,6 @@
 import { SubmitHandler } from 'react-hook-form';
 
-export interface PersonalDetails {
+export interface PersonalDetailsProps {
   name: string;
   email: string;
   aadharId: number;
@@ -10,6 +10,11 @@ export interface PersonalDetails {
   confirmBankAccount: number;
   salary?: number;
   gstNo?: number;
+  address: string;
+  city: string;
+  state: string;
+  country: string;
+  zipCode: string;
 }
 
 export interface Address {

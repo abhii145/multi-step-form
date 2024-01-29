@@ -6,6 +6,7 @@ import PersonalDetails from './PersonalDetails';
 import Address from './Address';
 import FinalStep from './FinalStep';
 import Stepper from './Stepper';
+import { PersonalDetailsProps } from '../utils';
 
 
 const schemas = [
@@ -68,7 +69,7 @@ const schemas = [
 
 const MultiStepForm = () => {
   const [step, setStep] = useState(0); 
-  const [formData, setFormData] = useState<any>({});
+  const [formData, setFormData] = useState({});
 
   const methods = useForm({
     resolver: zodResolver(schemas[step]), // Use schema based on current step
@@ -80,7 +81,7 @@ const MultiStepForm = () => {
   const nextStep = () => setStep(step + 1);
   const prevStep = () => setStep(step - 1);
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data:PersonalDetailsProps) => {
     setFormData({ ...formData, ...data }); 
     if (step < schemas.length - 1) {
       nextStep();
