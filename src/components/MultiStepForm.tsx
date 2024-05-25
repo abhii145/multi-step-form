@@ -10,7 +10,7 @@ import PersonalDetails from "./PersonalDetails";
 import Address from "./Address";
 import FinalStep from "./FinalStep";
 import Stepper from "./Stepper";
-import { schemas } from "../utils/Schema";
+import { schemas } from "../utils/Schema"; 
 
 const MultiStepForm = () => {
   const [step, setStep] = useState(0);

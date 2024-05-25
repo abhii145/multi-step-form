@@ -8,8 +8,8 @@ export interface PersonalDetailsProps {
   bank: "X Bank" | "Y Bank" | "Z Bank";
   bankAccount: number;
   confirmBankAccount: number;
-  salary?: number;
-  gstNo?: number;
+  salary: number;
+  gstNo: number;
   address: string;
   city: string;
   state: string;
