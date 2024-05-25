@@ -1,3 +1,6 @@
+<img width="506" alt="image" src="https://github.com/abhii145/multi-step-form/assets/55094244/a681843f-ae65-414a-b00f-bd89c07db77e">
+
+
 # Multi-Step Form with Conditional Component Rendering
 
 This project is a demonstration of a multi-step form built using React Hook Form for form management and Zod for schema validation. It showcases how to render conditional components based on user input.
