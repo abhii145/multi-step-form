@@ -10,9 +10,9 @@ const Address: React.FC = () => {
         errorMessage="Please Enter Your Complete Address"
       />
       <InputField
-        label="City"
-        name="city"
-        errorMessage="Please Enter Your City"
+        label="Country"
+        name="country"
+        errorMessage="Please Enter Your Country"
       />
       <InputField
         label="State"
@@ -20,9 +20,9 @@ const Address: React.FC = () => {
         errorMessage="Please Enter Your State"
       />
       <InputField
-        label="Country"
-        name="country"
-        errorMessage="Please Enter Your Country"
+        label="City"
+        name="city"
+        errorMessage="Please Enter Your City"
       />
       <InputField
         label="Zip Code"
