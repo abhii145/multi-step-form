@@ -1,54 +1,40 @@
+import React from "react";
 import { useFormContext } from "react-hook-form";
+import InputField from "./InputField";
+// import { validateDateOfBirth } from "../utils/actions";
 
 const PersonalDetails: React.FC = () => {
   const {
-    register,
     watch,
+    register,
     formState: { errors },
   } = useFormContext();
-
   const occupation = watch("occupation");
 
   return (
     <div className="max-w-md mx-auto mt-8 p-4 bg-gray-100 rounded-lg">
-      <div className="mb-4">
-        <label
-          className="block text-gray-700 text-sm font-bold mb-2"
-          htmlFor="name"
-        >
-          Name <span className="text-red-400">*</span>
-        </label>
-        <input
-          {...register("name")}
-          className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        />
-        {errors.name && (
-          <span className="text-red-500">Please Enter Your Name</span>
-        )}
-      </div>
-
-      <div className="mb-4">
-        <label className="block mb-2">Email <span className="text-red-500">*</span></label>
-        <input
-          {...register("email")}
-          type="email"
-          className="w-full p-2 border border-gray-300 rounded"
-        />
-        {errors.email && (
-          <span className="text-red-500">Please enter a valid email address</span>
-        )}
-      </div>
-
-      <div className="mb-4">
-        <label className="block mb-2">Aadhar ID <span className="text-red-500">*</span></label>
-        <input
-          {...register("aadharId")}
-          className="w-full p-2 border border-gray-300 rounded"
-        />
-        {errors.aadharId && (
-          <span className="text-red-500">Please Enter 5 Digit Aadhar ID</span>
-        )}
-      </div>
+      <InputField
+        label="Name"
+        name="name"
+        errorMessage="Please Enter Your Name"
+      />
+      <InputField
+        label="Email"
+        name="email"
+        type="email"
+        errorMessage="Please enter a valid email address"
+      />
+      <InputField
+        label="Date of Birth"
+        name="dateOfBirth"
+        type="date"
+        errorMessage="Date of birth cannot be today or in the future."
+      />
+      <InputField
+        label="Aadhar ID"
+        name="aadharId"
+        errorMessage="Please Enter 5 Digit Aadhar ID"
+      />
 
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -81,90 +67,49 @@ const PersonalDetails: React.FC = () => {
           />
           <span className="ml-2 text-gray-700">Businessman</span>
         </label>
-        <div>
         {errors.occupation && (
           <span className="text-red-500">Please Select Your Occupation</span>
         )}
-        </div>
-       
       </div>
 
-      <div className="mb-4">
-        <label className="block mb-2">Bank <span className="text-red-400">*</span></label>
-        <select
-          {...register("bank")}
-          className="w-full p-2 border border-gray-300 rounded"
-        >
-          <option value="X Bank">X Bank</option>
-          <option value="Y Bank">Y Bank</option>
-          <option value="Z Bank">Z Bank</option>
-        </select>
-        {errors.bank && (
-          <span className="text-red-500">Please Choose Your Bank</span>
-        )}
-      </div>
-
-      <div className="mb-4">
-        <label className="block mb-2">Bank Account No <span className="text-red-400">*</span></label>
-        <input
-          {...register("bankAccount")}
-          type="text"
-          className="w-full p-2 border border-gray-300 rounded"
-        />
-        {errors.bankAccount && (
-          <span className="text-red-500">Please Enter Your Bank Ac No</span>
-        )}
-      </div>
-      <div className="mb-4">
-        <label className="block mb-2">Confirm Bank Account No <span className="text-red-400">*</span></label>
-        <input
-          {...register("confirmBankAccount")}
-          type="password"
-          className="w-full p-2 border border-gray-300 rounded"
-        />
-        {errors.confirmBankAccount && (
-          <span className="text-red-500">
-           Bank account does not match
-          </span>
-        )}
-      </div>
+      <InputField
+        label="Bank"
+        name="bank"
+        type="select"
+        selectOptions={[
+          { value: "X Bank", label: "X Bank" },
+          { value: "Y Bank", label: "Y Bank" },
+          { value: "Z Bank", label: "Z Bank" },
+        ]}
+        errorMessage="Please Choose Your Bank"
+      />
+      <InputField
+        label="Bank Account No"
+        name="bankAccount"
+        type="text"
+        errorMessage="Please Enter Your Bank Ac No"
+      />
+      <InputField
+        label="Confirm Bank Account No"
+        name="confirmBankAccount"
+        type="password"
+        errorMessage="Bank account does not match"
+      />
 
       {occupation === "salaried" && (
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="salary"
-          >
-            Salary:
-          </label>
-          <input
-            {...register("salary", {
-              required: true,
-            })}
-            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
-          {errors.salary && (
-            <span className="text-red-500">Please Enter Your Salary</span>
-          )}
-        </div>
+        <InputField
+          label="Salary"
+          name="salary"
+          errorMessage="Please Enter Your Salary"
+        />
       )}
 
       {occupation === "businessman" && (
-        <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="gstNo"
-          >
-            GST No:
-          </label>
-          <input
-            {...register("gstNo")}
-            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          />
-          {errors.gstNo && (
-            <span className="text-red-500">Please Enter Your GST NO</span>
-          )}
-        </div>
+        <InputField
+          label="GST No"
+          name="gstNo"
+          errorMessage="Please Enter Your GST NO"
+        />
       )}
     </div>
   );

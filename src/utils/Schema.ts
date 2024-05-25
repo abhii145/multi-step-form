@@ -1,10 +1,18 @@
 import { z } from "zod";
 
+const today = new Date();
 export const schemas = [
   z
     .object({
       name: z.string().min(1),
       email: z.string().email(),
+      dateOfBirth: z.string()
+    .refine((date) => {
+      const inputDate = new Date(date);
+      return inputDate < today;
+    }, {
+      message: "Date of birth cannot be today or in the future."
+    }),
       aadharId: z.coerce.number().min(5),
       occupation: z.enum(["salaried", "student", "businessman"]),
       bank: z.enum(["X Bank", "Y Bank", "Z Bank"]),
